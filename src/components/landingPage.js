@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Image, Text, TouchableOpacity} from 'react-native';
+import {Actions} from 'react-native-router-flux';
 
 
 class LandingPage extends Component {
 	render() {
 		return (
 			<Image style = {styles.backgroundImageStyle} source = {require('../images/main_background.jpeg')}>
-				<TouchableOpacity onPress={() => {alert('asdadas')}}>
+				<TouchableOpacity onPress={() => {Actions.mainBucket()}}>
 					<Text style={styles.textStyle}>Lets Go!</Text>
 				</TouchableOpacity>
 			</Image>
