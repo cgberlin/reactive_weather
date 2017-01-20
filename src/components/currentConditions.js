@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, Image, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {Input, CardSection} from './common';
 import {cityChanged} from '../actions';
@@ -17,6 +17,9 @@ class CurrentConditions extends Component {
 					onChangeText={this.onCityChange.bind(this)}
 					value={this.props.city}
 				/>
+				<TouchableOpacity>
+					<Text style={styles.searchStyle}>Search</Text>
+				</TouchableOpacity>
 			</Image>
 			);
 	}
@@ -29,6 +32,13 @@ const styles = {
 		width:null,
 		height:null,
 		backgroundColor:'rgba(0,0,0,0)'
+	},
+	searchStyle: {
+		color:'white',
+		fontSize:25,
+		backgroundColor: '#007aff',
+		padding:15,
+		marginBottom:10
 	}
 }
 
