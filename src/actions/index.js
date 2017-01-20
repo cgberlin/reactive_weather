@@ -1,6 +1,9 @@
-export const checkWeather = () => {
+import {CITY_CHANGED
+} from './types';
+
+export const cityChanged = (text) => {
 	return {
-		type: 'check_weather',
-		payload: true
+		type: CITY_CHANGED,
+		payload: text
 	};
 };
