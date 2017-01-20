@@ -14,6 +14,8 @@ const Input = (props) => {
 				value={props.value}
 				onChangeText={props.onChangeText}
 				secureTextEntry = {props.secureTextEntry}
+				maxLength = {props.maxLength}
+				autoCapitalize = {props.capitalize}
 			/>
 		</View>
 		);
