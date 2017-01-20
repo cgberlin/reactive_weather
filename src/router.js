@@ -3,6 +3,7 @@ import {Text} from 'react-native';
 import {Scene, Router, Actions} from 'react-native-router-flux';
 import LandingPage from './components/landingPage';
 import NavPage from './components/navPage';
+import CurrentConditions from './components/currentConditions';
 
 
 const RouterComponent = () => {
@@ -23,6 +24,11 @@ const RouterComponent = () => {
 					title="Choose Service"
 					initial
 					/>
+				<Scene
+					key="currentConditions"
+					component={CurrentConditions}
+					title="Current Conditions"
+				/>
 			</Scene>
 		</Router>
 		);
