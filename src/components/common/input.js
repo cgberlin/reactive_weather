@@ -21,17 +21,18 @@ const Input = (props) => {
 
 const styles = {
 	inputStyle: {
-		color: '#000',
+		color: 'white',
 		paddingRight: 5,
-		paddingLeft: 5,
-		fontSize: 18,
+		paddingLeft: 1,
+		fontSize: 40,
 		lineHeight: 23,
 		flex: 2
 	},
 	labelStyle: {
-		fontSize: 18,
+		fontSize: 40,
 		paddingLeft: 20,
-		flex: 1
+		flex: 1,
+		color:'white'
 	},
 	containerStyle: {
 		height:40,
