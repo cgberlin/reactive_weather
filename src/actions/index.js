@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {CITY_CHANGED, GET_CURRENT_CONDITION, STATE_INITIAL
+import {Actions} from 'react-native-router-flux';
+import {CITY_CHANGED, GET_CURRENT_SUCCESS, STATE_INITIAL
 } from './types';
 
 export const cityChanged = (text) => {
@@ -19,7 +20,13 @@ export const stateInitialChanged = (text) => {
 export const getCurrentCondition = (city, stateInitials) => {
 	return (dispatch) => {
 		axios.get('https://api.wunderground.com/api/ce6b94f1b0cbafe0/conditions/q/'+stateInitials+'/'+city+'.json')
-			.then(response => console.log(response))
+			.then(response => {
+				dispatch({
+					type: GET_CURRENT_SUCCESS,
+					payload: response.data.current_observation
+				});
+				Actions.currentConditionDisplay();
+			})
 			.catch((error) => console.log(error));
 	}
 }

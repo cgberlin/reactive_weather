@@ -26,22 +26,22 @@ class CurrentConditions extends Component {
 		return (
 			<Image style = {styles.containerStyle} source = {require('../images/city.jpeg')}>
 				<View style = {styles.formStyle}>
-				<Input 
-					label="City:"
-					placeholder="Los Angeles"
-					onChangeText={this.onCityChange.bind(this)}
-					value={this.props.city}
-					capitalize="words"
-				/>
-				
-				<Input
-					label="State:"
-					placeholder="CA"
-					maxLength={2}
-					capitalize="characters"
-					onChangeText={this.onStateInitialChange.bind(this)}
-					value={this.props.stateInitials}
-				/>
+					<Input 
+						label="City:"
+						placeholder="Los Angeles"
+						onChangeText={this.onCityChange.bind(this)}
+						value={this.props.city}
+						capitalize="words"
+					/>
+					
+					<Input
+						label="State:"
+						placeholder="CA"
+						maxLength={2}
+						capitalize="characters"
+						onChangeText={this.onStateInitialChange.bind(this)}
+						value={this.props.stateInitials}
+					/>
 				</View>
 				<TouchableOpacity onPress={this.onGetCurrentWeather.bind(this)}>
 					<Text style={styles.searchStyle}>Search</Text>
@@ -76,7 +76,7 @@ const styles = {
 const mapStateToProps = (state) => {
 	return {
 		city: state.main.city,
-		stateInitials: state.main.stateInitials
+		stateInitials: state.main.stateInitials,
 	};
 };
 
