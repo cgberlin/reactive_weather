@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {Actions} from 'react-native-router-flux';
-import {CITY_CHANGED, GET_CURRENT_SUCCESS, STATE_INITIAL, SELECTED_SEARCH
+import {CITY_CHANGED, GET_CURRENT_SUCCESS, STATE_INITIAL, SELECTED_SEARCH, THREE_DAY_SUCCESS
 } from './types';
 
 export const cityChanged = (text) => {
@@ -28,7 +28,11 @@ export const getThreeDay = (city, stateInitials) => {
 	return (dispatch) => {
 		axios.get('https://api.wunderground.com/api/ce6b94f1b0cbafe0/forecast/q/'+stateInitials+'/'+city+'.json')
 			.then(response => {
-				console.log(response);
+				dispatch({
+					type: THREE_DAY_SUCCESS,
+					payload: response.data.forecast.simpleforecast
+				});
+				Actions.threeDayDisplay();
 			})
 			.catch((error) => alert("something went wrong"));
 	};
