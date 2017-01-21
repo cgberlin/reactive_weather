@@ -9,9 +9,10 @@ const INITIAL_STATE = {
 	windSpeed: null,
 	windDirection: '',
 	rainTodayInches: null,
-	searchLocation: ''
+	searchLocation: '',
+	typeOfSearch: ''
 };
-import { CITY_CHANGED, STATE_INITIAL, GET_CURRENT_SUCCESS
+import { CITY_CHANGED, STATE_INITIAL, GET_CURRENT_SUCCESS, SELECTED_SEARCH
 } from '../actions/types';
 
 
@@ -35,6 +36,9 @@ export default (state = INITIAL_STATE, action) => {
 				city: '',
 				stateInitials: ''
 			};
+		case SELECTED_SEARCH:
+			alert(action.payload);
+			return {...state, typeOfSearch: action.payload};
 		default: 
 			return state;
 	}

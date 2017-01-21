@@ -1,26 +1,43 @@
 import React, {Component} from 'react';
 import {Actions} from 'react-native-router-flux';
+import {connect} from 'react-redux';
 import {Text, View, Image} from 'react-native';
 import {Button, CardSection} from './common';
+import {selectedAType} from '../actions';
 
 class NavPage extends Component {
+	selectedCurrent() {
+		Actions.locationSelector();
+		this.props.selectedAType("current");
+	}
+
+	selectedThreeDay() {
+		Actions.locationSelector();
+		this.props.selectedAType("threeDay");
+	}
+
+	selectedTenDay() {
+		Actions.locationSelector();
+		this.props.selectedAType("tenDay");
+	}
+
 	render() {
 		return (
 			<Image style = {styles.backgroundImageStyle} source = {require('../images/rain.jpeg')}>
 				<View style={styles.sectionStyle}>
-					<Button onPress={() => Actions.currentConditions()}>
+					<Button onPress={this.selectedCurrent.bind(this)}>
 						Current Conditions
 					</Button>
 				</View>
 
 				<View style={styles.sectionStyle}>
-					<Button>
+					<Button onPress={this.selectedThreeDay.bind(this)}>
 						3 Day Forecast
 					</Button>
 				</View>
 				
 				<View style={styles.sectionStyle}>
-					<Button>
+					<Button onPress={this.selectedTenDay.bind(this)}>
 						10 Day Forecast
 					</Button>
 				</View>
@@ -49,4 +66,4 @@ const styles = {
 	}
 };
 
-export default NavPage;
+export default connect(null, {selectedAType})(NavPage);

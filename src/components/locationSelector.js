@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Input, CardSection} from './common';
 import {cityChanged, getCurrentCondition, stateInitialChanged} from '../actions';
 
-class CurrentConditions extends Component {
+class LocationSelector extends Component {
 	onCityChange(text) {
 		this.props.cityChanged(text);
 	}
@@ -80,4 +80,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, {cityChanged, getCurrentCondition, stateInitialChanged})(CurrentConditions);
+export default connect(mapStateToProps, {cityChanged, getCurrentCondition, stateInitialChanged})(LocationSelector);

@@ -1,12 +1,19 @@
 import axios from 'axios';
 import {Actions} from 'react-native-router-flux';
-import {CITY_CHANGED, GET_CURRENT_SUCCESS, STATE_INITIAL
+import {CITY_CHANGED, GET_CURRENT_SUCCESS, STATE_INITIAL, SELECTED_SEARCH
 } from './types';
 
 export const cityChanged = (text) => {
 	return {
 		type: CITY_CHANGED,
 		payload: text
+	};
+};
+
+export const selectedAType = (WhichOne) => {
+	return {
+		type: SELECTED_SEARCH,
+		payload: WhichOne
 	};
 };
 
