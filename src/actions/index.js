@@ -24,6 +24,26 @@ export const stateInitialChanged = (text) => {
 	};
 };
 
+export const getThreeDay = (city, stateInitials) => {
+	return (dispatch) => {
+		axios.get('https://api.wunderground.com/api/ce6b94f1b0cbafe0/forecast/q/'+stateInitials+'/'+city+'.json')
+			.then(response => {
+				console.log(response);
+			})
+			.catch((error) => alert("something went wrong"));
+	};
+};
+
+export const getTenDay = (city, stateInitials) => {
+	return (dispatch) => {
+		axios.get('https://api.wunderground.com/api/ce6b94f1b0cbafe0/forecast10day/q/'+stateInitials+'/'+city+'.json')
+			.then(response => {
+				console.log(response);
+			})
+			.catch((error) => alert("something went wrong"));
+	};
+};
+
 export const getCurrentCondition = (city, stateInitials) => {
 	return (dispatch) => {
 		axios.get('https://api.wunderground.com/api/ce6b94f1b0cbafe0/conditions/q/'+stateInitials+'/'+city+'.json')
@@ -34,6 +54,6 @@ export const getCurrentCondition = (city, stateInitials) => {
 				});
 				Actions.currentConditionDisplay();
 			})
-			.catch((error) => console.log(error));
-	}
-}
+			.catch((error) => alert("something went wrong"));
+	};
+};

@@ -23,7 +23,6 @@ export default (state = INITIAL_STATE, action) => {
 		case STATE_INITIAL:
 			return {...state, stateInitials: action.payload};
 		case GET_CURRENT_SUCCESS:
-			console.log(state);
 			return {...state, 
 				tempF: action.payload.temp_f,
 				tempC: action.payload.temp_c,
@@ -37,7 +36,6 @@ export default (state = INITIAL_STATE, action) => {
 				stateInitials: ''
 			};
 		case SELECTED_SEARCH:
-			alert(action.payload);
 			return {...state, typeOfSearch: action.payload};
 		default: 
 			return state;

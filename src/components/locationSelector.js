@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, Image, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Input, CardSection} from './common';
-import {cityChanged, getCurrentCondition, stateInitialChanged} from '../actions';
+import {cityChanged, getCurrentCondition, stateInitialChanged, getThreeDay, getTenDay} from '../actions';
 
 class LocationSelector extends Component {
 	onCityChange(text) {
@@ -11,7 +11,7 @@ class LocationSelector extends Component {
 	onStateInitialChange(text) {
 		this.props.stateInitialChanged(text);
 	}
-	onGetCurrentWeather(){
+	onGetWeather(){
 		if (!this.props.city) {
 			alert('Need to enter a city to search.');
 		}
@@ -19,9 +19,23 @@ class LocationSelector extends Component {
 			alert('Need to enter state initials to search.');
 		}
 		else {
-			this.props.getCurrentCondition(this.props.city, this.props.stateInitials);
+			switch (this.props.typeOfSearch) {
+				case "current":
+					this.props.getCurrentCondition(this.props.city, this.props.stateInitials);
+					break;
+				case "threeDay":
+					this.props.getThreeDay(this.props.city, this.props.stateInitials);
+					break;
+				case "tenDay":
+					this.props.getTenDay(this.props.city, this.props.stateInitials)
+					break;
+				default:
+					alert("something went wrong :(");
+					break;
+			}
 		}
 	}
+
 	render() {
 		return (
 			<Image style = {styles.containerStyle} source = {require('../images/city.jpeg')}>
@@ -43,7 +57,7 @@ class LocationSelector extends Component {
 						value={this.props.stateInitials}
 					/>
 				</View>
-				<TouchableOpacity onPress={this.onGetCurrentWeather.bind(this)}>
+				<TouchableOpacity onPress={this.onGetWeather.bind(this)}>
 					<Text style={styles.searchStyle}>Search</Text>
 				</TouchableOpacity>
 			</Image>
@@ -77,7 +91,12 @@ const mapStateToProps = (state) => {
 	return {
 		city: state.main.city,
 		stateInitials: state.main.stateInitials,
+		typeOfSearch: state.main.typeOfSearch
 	};
 };
 
-export default connect(mapStateToProps, {cityChanged, getCurrentCondition, stateInitialChanged})(LocationSelector);
+export default connect(mapStateToProps, {cityChanged, 
+										getCurrentCondition, 
+										stateInitialChanged,
+										getTenDay,
+										getThreeDay})(LocationSelector);
