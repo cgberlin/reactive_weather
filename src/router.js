@@ -6,6 +6,7 @@ import NavPage from './components/navPage';
 import LocationSelector from './components/locationSelector';
 import CurrentConditionDisplay from './components/currentConditionDisplay';
 import ThreeDayDisplay from './components/threeDayDisplay';
+import TenDayDisplay from './components/tenDayDisplay';
 
 
 const RouterComponent = () => {
@@ -41,6 +42,11 @@ const RouterComponent = () => {
 					component={ThreeDayDisplay}
 					title="Three Day Forecast"
 				/>
+				<Scene
+					key="tenDayDisplay"
+					component={TenDayDisplay}
+					title="Ten Day Forecast"
+					/>
 			</Scene>
 		</Router>
 		);
